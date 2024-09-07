@@ -1,0 +1,7 @@
+<h2>Create New Book</h2>
+<form (ngSubmit)="createBook()">
+  <label for="name">Name:</label>
+  <input id="name" [(ngModel)]="book.name" name="name" required>
+  <button type="submit">Create Book</button>
+</form>
+<a [routerLink]="['/books']">Back to List</a>

@@ -1,0 +1,7 @@
+<h2>Edit Book</h2>
+<form (ngSubmit)="updateBook()">
+  <label for="name">Name:</label>
+  <input id="name" [(ngModel)]="book.name" name="name" required>
+  <button type="submit">Update Book</button>
+</form>
+<a [routerLink]="['/books']">Back to List</a>
