@@ -1,17 +1,20 @@
+
+// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookCreateComponent } from './book-create/book-create.component';
-import { BookEditComponent } from './book-edit/book-edit.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import {BookCreateComponent} from "./book-create/book-create.component";
+import {BookEditComponent} from "./book-edit/book-edit.component";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    AppComponent,      // Должен быть здесь
+    // Должен быть здесь
     BookListComponent,
     BookDetailComponent,
     BookCreateComponent,
@@ -20,10 +23,15 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    FormsModule
+    RouterModule,
+    FormsModule,
+    AppComponent
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(
+      withInterceptorsFromDi()
+    )
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
